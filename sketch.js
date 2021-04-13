@@ -1,4 +1,5 @@
 
+
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -29,7 +30,8 @@ function setup() {
 	bobObject3=new bob(startBobPositionX,startBobPositionY,bobDiameter);
 	bobObject4=new bob(startBobPositionX+bobDiameter,startBobPositionY,bobDiameter);
 	bobObject5=new bob(startBobPositionX+bobDiameter*2,startBobPositionY,bobDiameter);
-	
+	bobObject1.x=0;
+		bobObject1.y=0;
 	
 	//Create a Ground
 	
@@ -119,7 +121,7 @@ function draw() {
   bobObject4.display();
   bobObject5.display();
  
-  
+  mouseDragged();
   
 	
   
@@ -129,13 +131,11 @@ function draw() {
  
 }
 
-function keyPressed() {
-  	if (keyCode === UP_ARROW) {
-
-    	Matter.Body.applyForce(bobObject1.body,bobObject1.body.position,{x:-50,y:-45});
-
+function mouseDragged() {
+  	
+    	Matter.Body.setPosition(bobObject1.body,{x: mouseX,y: mouseY});
+		
   	}
-}
 
 
 function drawLine(constraint)
@@ -149,6 +149,12 @@ function drawLine(constraint)
 	roofBodyY=roofBodyPosition.y+roofBodyOffset.y
 	line(bobBodyPosition.x, bobBodyPosition.y, roofBodyX,roofBodyY);
 }
+
+
+
+
+
+
 
 
 
